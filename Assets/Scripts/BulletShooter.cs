@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletShooter : MonoBehaviour
 {
     private bool _isMoving;
+    public Vector2 direction;
+    public float bulletSpeed;
     void Start()
     {
         _isMoving = true;
@@ -25,7 +27,7 @@ public class BulletShooter : MonoBehaviour
     {
         if (_isMoving) 
         {
-            transform.Translate(Vector3.right, Space.Self);
+            transform.Translate(direction * bulletSpeed * Time.deltaTime, Space.Self);
         }
             
     }

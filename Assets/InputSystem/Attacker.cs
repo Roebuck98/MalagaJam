@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputSystemAgent : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
 
     private PlayerInput playerInput;
@@ -21,23 +21,35 @@ public class InputSystemAgent : MonoBehaviour
 
     private bool _shooting = false;
     private float _lastShotTime = 0;
+    private Defender def;
+
+    public float RotationSpeed = 50f;
+    [Range(0f, 1f)]
+    public float InputRotationThreshold = 0.6f;
+    private Vector3 _InputRotation;
 
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        def = GetComponent<Defender>();
 
         
     }
     private void Update()
     {
         Move();
+        Rotate();
         Shoot();
     }
     public void Move()
     {
         if (_InputMovement != Vector3.zero)
         {
+            if(_InputRotation.x >= 0.01f)
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            else if(_InputRotation.x <= - 0.01f)
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
             CharacterController.Move(_InputMovement.normalized * MovementSped * Time.deltaTime);
         }
     }
@@ -47,23 +59,39 @@ public class InputSystemAgent : MonoBehaviour
         if (_shooting && _lastShotTime + 1 / FireRate < Time.time)
         {
             _lastShotTime = Time.time;
-            Instantiate(bulletPrefab, bulletStart);
+            GameObject bullet = Instantiate(bulletPrefab, bulletStart.position,Quaternion.identity);
+            bullet.GetComponent<BulletShooter>().direction = _InputRotation;
         }
     }
 
-    /*private void Move()
+    private void Rotate()
     {
-        if (_InputMovement != Vector3.zero)
-        {
-            CharacterController.Move(_InputMovement.normalized * MovementSped * Time.deltaTime);
-        }
-    }*/
+        if (_InputRotation.x >= 0.01f)
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        else if (_InputRotation.x <= -0.01f)
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    public void ChangeRole()
+    {
+        def.enabled = true;
+        this.enabled = false;
+    }
+
 
     public void OnMovement(InputAction.CallbackContext value)
     {
         var inputMovement = value.ReadValue<Vector2>();
         var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
         _InputMovement = FilterInput(rawInputMovement, InputMovementThreshold);
+        _InputMovement = _InputMovement.normalized;
+    }
+
+    public void OnRotation(InputAction.CallbackContext value)
+    {
+        var inputRotation = value.ReadValue<Vector2>();
+        var rawInputRotation = new Vector2(inputRotation.x, inputRotation.y);
+        _InputRotation = FilterInput(rawInputRotation, InputRotationThreshold);
     }
 
     public void OnShoot(InputAction.CallbackContext value)

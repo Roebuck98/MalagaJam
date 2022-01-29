@@ -20,6 +20,15 @@ public class Defender : MonoBehaviour
     public float timeAbsorbing;
     [Range(0f, 1f)]
     public float InputMovementThreshold = 0.1f;
+
+    private Attacker attacker;
+    public GameObject otherPlayer;
+    public float energyBar;
+
+    private void Awake()
+    {
+        attacker = GetComponent<Attacker>();
+    }
     private void Update()
     {
         //GetMovementInput();
@@ -50,7 +59,6 @@ public class Defender : MonoBehaviour
     }
     public void OnMovement(InputAction.CallbackContext value)
     {
-        Debug.Log("t");
         var inputMovement = value.ReadValue<Vector2>();
         var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
         rawInputMovement = FilterInput(rawInputMovement, InputMovementThreshold);
@@ -68,6 +76,25 @@ public class Defender : MonoBehaviour
             ableToMove = false;
             Invoke(nameof(IT), timeAbsorbing);
         }
+    }
+
+    public void ChangeRole()
+    {
+        if(energyBar >= 1) 
+        {
+            energyBar = 0;
+            attacker.enabled = true;
+            Debug.Log("Cambiando rol");
+            otherPlayer.GetComponent<Attacker>().ChangeRole();
+            //attacker.ChangeRole();
+            this.enabled = false;
+        }
+            
+    }
+
+    public void onSwap(InputAction.CallbackContext value)
+    {
+        ChangeRole();
     }
     void GetAbsorbInput()
     {
