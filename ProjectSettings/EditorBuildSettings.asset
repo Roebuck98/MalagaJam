@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Guti.unity
     guid: 572dcdfaa9b7b6144aebe5d3e9876804
+  - enabled: 1
+    path: Assets/Scenes/Adri.unity
+    guid: 71b15e87f4067814b927d3553312575b
   m_configObjects: {}
