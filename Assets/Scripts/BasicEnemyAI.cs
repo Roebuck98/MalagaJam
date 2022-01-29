@@ -23,7 +23,7 @@ public class BasicEnemyAI : MonoBehaviour
     public float waitTimeUntilNextShot;
     public LayerMask obstacleLayerMask;
     public GameObject bullet;
-    public Animator anim;
+    private Animator anim;
     public Transform bulletStart;
     private void Start()
     {
