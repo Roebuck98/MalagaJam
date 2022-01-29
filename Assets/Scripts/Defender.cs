@@ -74,7 +74,7 @@ public class Defender : MonoBehaviour
             Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
     }
-    void OnRotation(InputAction.CallbackContext value)
+    public void OnRotation(InputAction.CallbackContext value)
     {
         var inputMovement = value.ReadValue<Vector2>();
         var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
