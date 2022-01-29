@@ -7,6 +7,8 @@ public class Defender : MonoBehaviour
 {
     [SerializeField] private Vector2 input;
     [SerializeField] private Vector2 lastInput;
+    private Vector2 rotation;
+    private Vector2 lastRotation;
     public KeyCode absorbKey;
     public Transform playerGraphics;
     public float absorbRadius;
@@ -25,9 +27,15 @@ public class Defender : MonoBehaviour
     public GameObject otherPlayer;
     public float energyBar;
 
+    public float absorbCooldown;
+    private float lastTimeAbsorb;
+
+    public float absorbMovementSpeed;
+
     private void Awake()
     {
         attacker = GetComponent<Attacker>();
+        lastTimeAbsorb = -absorbCooldown;
     }
     private void Update()
     {
@@ -47,20 +55,6 @@ public class Defender : MonoBehaviour
     {
         Movement();
     }
-    void GetMovementInput()
-    {
-        //Test
-        if (!absorbing)
-        {
-            Vector2 newInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            input = newInput;
-            if (newInput != Vector2.zero)
-                lastInput = newInput;
-            input = input.normalized;
-            lastInput = lastInput.normalized;
-        }
-        //New Input
-    }
     public void OnMovement(InputAction.CallbackContext value)
     {
         var inputMovement = value.ReadValue<Vector2>();
@@ -74,12 +68,22 @@ public class Defender : MonoBehaviour
     }
     public void OnAbsorb(InputAction.CallbackContext value)
     {
-        if(!absorbing)
+        if(!absorbing && lastTimeAbsorb + absorbCooldown <= Time.time)
         {
             absorbing = true;
-            ableToMove = false;
-            Invoke(nameof(IT), timeAbsorbing);
+            Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
+    }
+    void OnRotation(InputAction.CallbackContext value)
+    {
+        var inputMovement = value.ReadValue<Vector2>();
+        var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
+        rawInputMovement = FilterInput(rawInputMovement, InputMovementThreshold);
+        rotation = rawInputMovement;
+        if (rawInputMovement != Vector2.zero)
+            lastRotation = rawInputMovement;
+        rotation = rotation.normalized;
+        lastRotation = lastRotation.normalized;
     }
 
     public void ChangeRole()
@@ -106,8 +110,7 @@ public class Defender : MonoBehaviour
         if (Input.GetKeyDown(absorbKey) && !absorbing)
         {
             absorbing = true;
-            ableToMove = false;
-            Invoke(nameof(IT), timeAbsorbing);
+            Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
         //New Input
     }
@@ -117,29 +120,39 @@ public class Defender : MonoBehaviour
     }
     void Absorb()
     {
-        Collider2D[] bullets = Physics2D.OverlapCircleAll(transform.position, absorbRadius, absorbLayer);
-        if (bullets.Length > 0)
+        if(absorbing)
         {
-            foreach (Collider2D collider in bullets)
+            Collider2D[] bullets = Physics2D.OverlapCircleAll(transform.position, absorbRadius, absorbLayer);
+            if (bullets.Length > 0)
             {
-                if (Vector2.Angle((transform.position + new Vector3(lastInput.x, lastInput.y, 0)) - transform.position, (collider.transform.position - transform.position).normalized) <= absorbAngle)
+                foreach (Collider2D collider in bullets)
                 {
-                    Debug.Log(collider.name);
-                    //Absorber
-                    collider.GetComponent<EnemyBullet>().target = transform;
-                    collider.GetComponent<EnemyBullet>().pool = true;
+                    if (Vector2.Angle((transform.position + new Vector3(lastRotation.x, lastRotation.y, 0)) - transform.position, (collider.transform.position - transform.position).normalized) <= absorbAngle)
+                    {
+                        Debug.Log(collider.name);
+                        //Absorber
+                        collider.GetComponent<EnemyBullet>().target = transform;
+                        collider.GetComponent<EnemyBullet>().pool = true;
+                    }
                 }
             }
+            absorbIndicator.SetActive(true);
+            absorbIndicator.transform.right = new Vector3(lastRotation.x, lastRotation.y).normalized;
         }
-        absorbIndicator.SetActive(true);
-        absorbIndicator.transform.right = new Vector3(lastInput.x, lastInput.y).normalized;
     }
     void Movement()
     {
         if (ableToMove)
         {
             Flip();
-            transform.Translate(input * Time.fixedDeltaTime * movementSpeed, Space.World);
+            if(absorbing)
+            {
+                transform.Translate(input * Time.fixedDeltaTime * absorbMovementSpeed, Space.World);
+            }
+            else
+            {
+                transform.Translate(input * Time.fixedDeltaTime * movementSpeed, Space.World);
+            }
         }
     }
     void Flip()
@@ -161,11 +174,11 @@ public class Defender : MonoBehaviour
     {
 
     }
-    void IT()
+    void RestartAbsorb()
     {
         absorbIndicator.SetActive(false);
         absorbing = false;
-        ableToMove = true;
+        lastTimeAbsorb = Time.time;
     }
     private Vector3 FilterInput(Vector3 rawInput, float threshold)
     {
