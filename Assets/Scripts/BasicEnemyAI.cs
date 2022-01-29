@@ -23,10 +23,12 @@ public class BasicEnemyAI : MonoBehaviour
     public float waitTimeUntilNextShot;
     public LayerMask obstacleLayerMask;
     public GameObject bullet;
+    private Animator anim;
     public Transform bulletStart;
     private void Start()
     {
         seeker = GetComponent<Seeker>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -46,6 +48,7 @@ public class BasicEnemyAI : MonoBehaviour
                     Shoot();
                     break;
                 default:
+                    
                     break;
             }
         }
@@ -64,12 +67,14 @@ public class BasicEnemyAI : MonoBehaviour
         if (currentWaypoint >= path.vectorPath.Count)
         {
             reachedEndOfPath = true;
+            anim.SetBool("Walking", false);
             return;
         }
         else
         {
             reachedEndOfPath = false;
         }
+        anim.SetBool("Walking", true);
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint + 1] - (Vector2)transform.position).normalized;
         Vector2 force = direction * movementSpeed * Time.deltaTime;
         float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
