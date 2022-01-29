@@ -282,6 +282,8 @@ MonoBehaviour:
   FireRate: 1
   RotationSpeed: 50
   InputRotationThreshold: 0.2
+  _InputRotation: {x: 0, y: 0, z: 0}
+  _lastInputRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &3805460249140405881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +314,8 @@ MonoBehaviour:
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
   energyBar: 0
+  absorbCooldown: 0
+  absorbMovementSpeed: 0
 --- !u!212 &3805460249140405886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,7 +420,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000011920929, y: -0.03843236}
+  m_Offset: {x: -0.08403218, y: -0.03843236}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -427,5 +431,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93541455, y: 1.461854}
+  m_Size: {x: 0.98125005, y: 1.461854}
   m_EdgeRadius: 0
