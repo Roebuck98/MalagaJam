@@ -32,7 +32,6 @@ public class Defender : MonoBehaviour
     private void Update()
     {
         //GetMovementInput();
-        Movement();
         GetAbsorbInput();
         if (absorbing)
         {
@@ -42,6 +41,11 @@ public class Defender : MonoBehaviour
         {
             Attrack();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        Movement();
     }
     void GetMovementInput()
     {
@@ -135,7 +139,7 @@ public class Defender : MonoBehaviour
         if (ableToMove)
         {
             Flip();
-            transform.Translate(input * Time.deltaTime * movementSpeed, Space.World);
+            transform.Translate(input * Time.fixedDeltaTime * movementSpeed, Space.World);
         }
     }
     void Flip()

@@ -26,8 +26,8 @@ public class Attacker : MonoBehaviour
     public float RotationSpeed = 50f;
     [Range(0f, 1f)]
     public float InputRotationThreshold = 0.6f;
-    private Vector3 _InputRotation;
-    private Vector3 _lastInputRotation;
+    public Vector3 _InputRotation;
+    public Vector3 _lastInputRotation;
 
 
     private void Awake()
@@ -56,7 +56,7 @@ public class Attacker : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             else if(_InputRotation.x <= - 0.01f)
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
-            transform.Translate(_InputMovement.normalized * MovementSped * Time.fixedDeltaTime);
+            transform.Translate(_InputMovement.normalized * MovementSped * Time.fixedDeltaTime, Space.World);
         }
     }
 
