@@ -65,9 +65,7 @@ public class Attacker : MonoBehaviour
         if (_shooting && _lastShotTime + 1 / FireRate < Time.time)
         {
             _lastShotTime = Time.time;
-            GameObject bullet = Instantiate(bulletPrefab, bulletStart.position,Quaternion.identity);
-            bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
-            bullet.transform.right = _lastInputRotation;
+            GameObject bullet = Instantiate(bulletPrefab, bulletStart.position, bulletStart.rotation);
         }
     }
 
