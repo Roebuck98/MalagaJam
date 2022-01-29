@@ -131,8 +131,11 @@ public class Defender : MonoBehaviour
                     {
                         Debug.Log(collider.name);
                         //Absorber
-                        collider.GetComponent<EnemyBullet>().target = transform;
-                        collider.GetComponent<EnemyBullet>().pool = true;
+                        if(!collider.GetComponent<BulletShooter>().pool)
+                        {
+                            collider.GetComponent<BulletShooter>().target = transform;
+                            collider.GetComponent<BulletShooter>().pool = true;
+                        }
                     }
                 }
             }

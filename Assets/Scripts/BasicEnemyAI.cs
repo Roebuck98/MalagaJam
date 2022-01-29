@@ -22,6 +22,8 @@ public class BasicEnemyAI : MonoBehaviour
     public float timer;
     public float waitTimeUntilNextShot;
     public LayerMask obstacleLayerMask;
+    public GameObject bullet;
+    public Transform bulletStart;
     private void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -29,6 +31,7 @@ public class BasicEnemyAI : MonoBehaviour
     private void Update()
     {
         UpdatePath();
+        Swap();
         switch (currentState)
         {
             case AIState.Following:
@@ -76,7 +79,9 @@ public class BasicEnemyAI : MonoBehaviour
     public void Shoot()
     { 
         currentState = AIState.Thinking;
-        Debug.Log("Disparar");
+        GameObject _bullet = Instantiate(bullet, bulletStart.position,Quaternion.identity);
+        _bullet.GetComponent<BulletShooter>().direction = Quaternion.AngleAxis(Random.Range(-5,5),transform.forward) * (target.position - bulletStart.position).normalized;
+        _bullet.GetComponent<BulletShooter>().transform.right = target.position - bulletStart.position;
     }
     void ResetShot()
     {
@@ -100,6 +105,17 @@ public class BasicEnemyAI : MonoBehaviour
             {
                 ResetShot();
             }        
+        }
+    }
+    void Swap()
+    {
+        if(target.position.x > transform.position.x)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
     }
 
