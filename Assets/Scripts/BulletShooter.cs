@@ -81,8 +81,11 @@ public class BulletShooter : MonoBehaviour
             Destroy(gameObject);
         }
 
-        var characterHealth = collision.gameObject.GetComponent<CharacterHealth>();
-        characterHealth?.TakeDamage(BulletDamage);
+        if(!pool)
+        {
+            var characterHealth = collision.gameObject.GetComponent<CharacterHealth>();
+            characterHealth?.TakeDamage(BulletDamage);
+        }
     }
 
     private void Move()

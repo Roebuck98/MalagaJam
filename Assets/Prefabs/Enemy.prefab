@@ -139,7 +139,7 @@ MonoBehaviour:
   target: {fileID: 0}
   nextWaypointDistance: 3
   timer: 0
-  waitTimeUntilNextShot: 1
+  waitTimeUntilNextShot: 1.5
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 64

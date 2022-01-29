@@ -53,7 +53,7 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void Follow()
     {
-        if (!Physics2D.Raycast(transform.position, target.position, obstacleLayerMask))
+        if (!Physics2D.Raycast(transform.position, target.position, obstacleLayerMask,3))
         {
             Debug.Log("Linea de vision");
             currentState = AIState.Shooting;

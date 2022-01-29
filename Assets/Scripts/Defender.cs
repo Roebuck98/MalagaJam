@@ -131,7 +131,7 @@ public class Defender : MonoBehaviour
                         {
                             collider.GetComponent<BulletShooter>().target = transform;
                             collider.GetComponent<BulletShooter>().pool = true;
-                            Attacker.bulletsToShoot++;
+                            energyBar += 0.1f;
                         }
                     }
                 }
