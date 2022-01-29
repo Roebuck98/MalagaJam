@@ -26,11 +26,6 @@ public class EnemyBullet : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            rb.velocity = Vector2.zero;
-            pool = true;
-        }
         if (pool)
         {
             UpdatePath();
