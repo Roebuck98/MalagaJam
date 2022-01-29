@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputSystemAgent : MonoBehaviour
+public class Attacker : MonoBehaviour
 {
 
     private PlayerInput playerInput;
@@ -21,11 +21,13 @@ public class InputSystemAgent : MonoBehaviour
 
     private bool _shooting = false;
     private float _lastShotTime = 0;
+    private Defender def;
 
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        def = GetComponent<Defender>();
 
         
     }
@@ -51,13 +53,12 @@ public class InputSystemAgent : MonoBehaviour
         }
     }
 
-    /*private void Move()
+    public void ChangeRole()
     {
-        if (_InputMovement != Vector3.zero)
-        {
-            CharacterController.Move(_InputMovement.normalized * MovementSped * Time.deltaTime);
-        }
-    }*/
+        def.enabled = true;
+        this.enabled = false;
+    }
+
 
     public void OnMovement(InputAction.CallbackContext value)
     {
