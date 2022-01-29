@@ -40,9 +40,13 @@ public class Attacker : MonoBehaviour
     }
     private void Update()
     {
-        Move();
         Rotate();
         Shoot();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
     public void Move()
     {
@@ -52,7 +56,7 @@ public class Attacker : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             else if(_InputRotation.x <= - 0.01f)
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
-            CharacterController.Move(_InputMovement.normalized * MovementSped * Time.deltaTime);
+            transform.Translate(_InputMovement.normalized * MovementSped * Time.fixedDeltaTime);
         }
     }
 
