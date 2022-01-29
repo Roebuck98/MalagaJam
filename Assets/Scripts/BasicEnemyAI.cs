@@ -30,21 +30,24 @@ public class BasicEnemyAI : MonoBehaviour
     }
     private void Update()
     {
-        UpdatePath();
-        Swap();
-        switch (currentState)
+        if(target != null)
         {
-            case AIState.Following:
-                Follow();
-                break;
-            case AIState.Thinking:
-                Think();
-                break;
-            case AIState.Shooting:
-                Shoot();
-                break;
-            default:
-                break;
+            UpdatePath();
+            Swap();
+            switch (currentState)
+            {
+                case AIState.Following:
+                    Follow();
+                    break;
+                case AIState.Thinking:
+                    Think();
+                    break;
+                case AIState.Shooting:
+                    Shoot();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -78,10 +81,10 @@ public class BasicEnemyAI : MonoBehaviour
     }
     public void Shoot()
     { 
-        currentState = AIState.Thinking;
         GameObject _bullet = Instantiate(bullet, bulletStart.position,Quaternion.identity);
         _bullet.GetComponent<BulletShooter>().direction = Quaternion.AngleAxis(Random.Range(-5,5),transform.forward) * (target.position - bulletStart.position).normalized;
         _bullet.GetComponent<BulletShooter>().transform.right = target.position - bulletStart.position;
+        currentState = AIState.Thinking;
     }
     void ResetShot()
     {

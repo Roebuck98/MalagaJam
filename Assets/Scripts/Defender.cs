@@ -13,6 +13,7 @@ public class Defender : MonoBehaviour
     public float absorbRadius;
     public float absorbAngle;
     public LayerMask absorbLayer;
+    public LayerMask absorbEnemyLayer;
     public float movementSpeed;
     public GameObject absorbIndicator;
     public bool ableToMove;
@@ -112,6 +113,25 @@ public class Defender : MonoBehaviour
                         {
                             collider.GetComponent<BulletShooter>().target = transform;
                             collider.GetComponent<BulletShooter>().pool = true;
+                            Attacker.bulletsToShoot++;
+                        }
+                    }
+                }
+            }
+            Collider2D[] enemyBullets = Physics2D.OverlapCircleAll(transform.position, absorbRadius, absorbEnemyLayer);
+            if (enemyBullets.Length > 0)
+            {
+                foreach (Collider2D collider in enemyBullets)
+                {
+                    if (Vector2.Angle((transform.position + new Vector3(lastRotation.x, lastRotation.y, 0)) - transform.position, (collider.transform.position - transform.position).normalized) <= absorbAngle)
+                    {
+                        Debug.Log(collider.name);
+                        //Absorber
+                        if (!collider.GetComponent<BulletShooter>().pool)
+                        {
+                            collider.GetComponent<BulletShooter>().target = transform;
+                            collider.GetComponent<BulletShooter>().pool = true;
+                            Attacker.bulletsToShoot++;
                         }
                     }
                 }

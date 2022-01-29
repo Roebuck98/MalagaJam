@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3195118168943584130}
   - component: {fileID: 3195118168943584132}
   - component: {fileID: 3195118168943584133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3195118169089546289}
   - component: {fileID: 3195118169089546288}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4888,7 +4888,7 @@ GameObject:
   - component: {fileID: 3195118169155022118}
   - component: {fileID: 3195118169155022119}
   - component: {fileID: 3195118169155022116}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpriteMoving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +4991,7 @@ GameObject:
   - component: {fileID: -3170922336447715873}
   - component: {fileID: 8156578652601667030}
   - component: {fileID: -9139081059220576887}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: EnemyShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5092,7 +5092,7 @@ GameObject:
   - component: {fileID: 5602052914109143454}
   - component: {fileID: 4537688729425912991}
   - component: {fileID: 3229668399473003617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpriteSticked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5194,7 +5194,7 @@ GameObject:
   - component: {fileID: 8716439934421517260}
   - component: {fileID: 8716439934421517258}
   - component: {fileID: 8716439934421517259}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9997,7 +9997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716439935002762521}
   - component: {fileID: 8716439935002762520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FireTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10179,7 +10179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8716439935025275190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

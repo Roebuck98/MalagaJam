@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: -5416559022599464687}
   - component: {fileID: 6996883467309076067}
   - component: {fileID: 1966307602}
+  - component: {fileID: 823675752125357262}
   m_Layer: 3
   m_Name: CandlePlayer
   m_TagString: Untagged
@@ -438,16 +439,17 @@ MonoBehaviour:
   lastInput: {x: 0, y: 0}
   rotation: {x: 0, y: 0}
   lastRotation: {x: 0, y: 0}
-  absorbKey: 0
   playerGraphics: {fileID: 4704627709257393549}
   absorbRadius: 3
   absorbAngle: 30
   absorbLayer:
     serializedVersion: 2
     m_Bits: 256
+  absorbEnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   movementSpeed: 6
   absorbIndicator: {fileID: 1965269990}
-  attrackKey: 0
   ableToMove: 1
   absorbing: 0
   timeAbsorbing: 0.75
@@ -573,3 +575,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &823675752125357262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704627710453412741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be17fa82712f621488cfc55245aab16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  IsPlayer: 1

@@ -29,13 +29,15 @@ public class Attacker : MonoBehaviour
     public Vector3 _InputRotation;
     public Vector3 _lastInputRotation;
 
+    public static float bulletsToShoot;
+
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         def = GetComponent<Defender>();
         _lastInputRotation = Vector3.right;
-
+        bulletsToShoot = 5;
         
     }
     private void Update()
@@ -62,12 +64,13 @@ public class Attacker : MonoBehaviour
 
     public void Shoot()
     {
-        if (_shooting && _lastShotTime + 1 / FireRate < Time.time)
+        if (_shooting && _lastShotTime + 1 / FireRate < Time.time && bulletsToShoot > 0)
         {
             _lastShotTime = Time.time;
             GameObject bullet = Instantiate(bulletPrefab, bulletStart.position, bulletStart.rotation);
             bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
             bullet.transform.right = _lastInputRotation;
+            bulletsToShoot--;
         }
     }
 
