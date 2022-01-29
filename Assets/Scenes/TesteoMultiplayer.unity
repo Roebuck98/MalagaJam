@@ -164,7 +164,7 @@ MonoBehaviour:
   absorbLayer:
     serializedVersion: 2
     m_Bits: 0
-  movementSpeed: 5
+  movementSpeed: 6
   absorbIndicator: {fileID: 0}
   attrackKey: 0
   ableToMove: 1
@@ -204,12 +204,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 93554588}
-  MovementSped: 10
+  MovementSped: 6
   InputMovementThreshold: 0.1
   _InputMovement: {x: 0, y: 0, z: 0}
   bulletPrefab: {fileID: 0}
   bulletStart: {fileID: 0}
   FireRate: 3
+  RotationSpeed: 50
+  InputRotationThreshold: 0.6
 --- !u!114 &93554590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +289,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ebc0588e-e92f-4fc0-921d-72d33d73395b
     m_ActionName: Player/Swap[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8de24b0f-22f0-43cd-81dc-c9927b37bbe8
+    m_ActionName: Player/Rotation[/XInputControllerWindows/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -753,8 +759,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -846,6 +852,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1552235522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552235523}
+  m_Layer: 0
+  m_Name: bulletStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552235523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552235522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1995020147}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563085946
 GameObject:
@@ -1080,6 +1116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046364538}
+  - {fileID: 1552235523}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1114,12 +1151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 1995020148}
-  MovementSped: 10
+  MovementSped: 6
   InputMovementThreshold: 0.1
   _InputMovement: {x: 0, y: 0, z: 0}
-  bulletPrefab: {fileID: 0}
-  bulletStart: {fileID: 0}
+  bulletPrefab: {fileID: 3195118169606419025, guid: f019fa8f7b5a9ad46b7972e30d987b9c, type: 3}
+  bulletStart: {fileID: 1552235523}
   FireRate: 3
+  RotationSpeed: 50
+  InputRotationThreshold: 0.2
 --- !u!114 &1995020150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,7 +1213,19 @@ MonoBehaviour:
     m_ActionId: ca9b3126-7129-47bc-b340-eff8bb92c1ba
     m_ActionName: Player/Movement[/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1995020149}
+        m_TargetAssemblyTypeName: Attacker, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fc01270e-43f5-4cb7-a04b-f947c09a7f5f
     m_ActionName: Player/Shoot[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -1197,6 +1248,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ebc0588e-e92f-4fc0-921d-72d33d73395b
     m_ActionName: Player/Swap[/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1995020149}
+        m_TargetAssemblyTypeName: Attacker, Assembly-CSharp
+        m_MethodName: OnRotation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8de24b0f-22f0-43cd-81dc-c9927b37bbe8
+    m_ActionName: Player/Rotation[/XInputControllerWindows/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1223,7 +1290,7 @@ MonoBehaviour:
   absorbLayer:
     serializedVersion: 2
     m_Bits: 0
-  movementSpeed: 5
+  movementSpeed: 6
   absorbIndicator: {fileID: 0}
   attrackKey: 0
   ableToMove: 1
