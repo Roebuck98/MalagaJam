@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 3fbb2e12c52c8804cbb893e148a4ed0d
+guid: 2a206e9b9f1ed184fbce50d7929a7ed6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7097117960439572755
-    second: Bola_fuego_pared1_0
+      213: -5041751707590346348
+    second: Botones_Menu_0
+  - first:
+      213: -7013201495767117944
+    second: Botones_Menu_1
+  - first:
+      213: -4114960893736070278
+    second: Botones_Menu_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bola_fuego_pared1_0
+      name: Botones_Menu_0
       rect:
         serializedVersion: 2
-        x: 867
-        y: 459
-        width: 160
-        height: 112
+        x: 371
+        y: 486
+        width: 18
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,8 +150,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de654fe21d8f18d90800000000000000
-      internalID: -7097117960439572755
+      spriteID: 499bb57c889180ab0800000000000000
+      internalID: -5041751707590346348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones_Menu_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 203
+        width: 486
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88f009aa56a1cae90800000000000000
+      internalID: -7013201495767117944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botones_Menu_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 21
+        width: 441
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a73dc308ed8b4e6c0800000000000000
+      internalID: -4114960893736070278
       vertices: []
       indices: 
       edges: []
@@ -153,7 +201,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 76a15cceefa2f6a409625f6b5ecd2d31
+    spriteID: 091053eaf0bee4f49bae5628d0b546ce
     internalID: 0
     vertices: []
     indices: 

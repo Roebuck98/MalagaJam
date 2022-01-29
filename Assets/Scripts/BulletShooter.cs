@@ -4,6 +4,7 @@ public class BulletShooter : MonoBehaviour
 {
     public GameObject SpriteMoving;
     public GameObject SpriteSticked;
+    public bool SetChildToCollision = false;
     private bool _isMoving;
     public Vector2 direction;
     public float bulletSpeed;
@@ -21,6 +22,14 @@ public class BulletShooter : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _isMoving = false;
+        SpriteMoving.SetActive(false);
+        SpriteSticked.SetActive(true);
+        var normal = collision.contacts[0].normal;
+        transform.right = - new Vector3(normal.x, normal.y, 0);
+        if (SetChildToCollision)
+        {
+            transform.parent = collision.transform;
+        }
     }
 
     private void Move()
