@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+using UnityEngine.InputSystem;
 public class Defender : MonoBehaviour
 {
     [SerializeField] private Vector2 input;
@@ -18,9 +18,11 @@ public class Defender : MonoBehaviour
     public bool ableToMove;
     public bool absorbing;
     public float timeAbsorbing;
+    [Range(0f, 1f)]
+    public float InputMovementThreshold = 0.1f;
     private void Update()
     {
-        GetMovementInput();
+        //GetMovementInput();
         Movement();
         GetAbsorbInput();
         if (absorbing)
@@ -45,6 +47,18 @@ public class Defender : MonoBehaviour
             lastInput = lastInput.normalized;
         }
         //New Input
+    }
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        Debug.Log("t");
+        var inputMovement = value.ReadValue<Vector2>();
+        var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
+        rawInputMovement = FilterInput(rawInputMovement, InputMovementThreshold);
+        input = rawInputMovement;
+        if (rawInputMovement != Vector2.zero)
+            lastInput = rawInputMovement;
+        input = input.normalized;
+        lastInput = lastInput.normalized;
     }
     void GetAbsorbInput()
     {
@@ -112,6 +126,18 @@ public class Defender : MonoBehaviour
         absorbIndicator.SetActive(false);
         absorbing = false;
         ableToMove = true;
+    }
+    private Vector3 FilterInput(Vector3 rawInput, float threshold)
+    {
+        return new Vector3(
+            HighPassFilter(rawInput.x, threshold),
+            HighPassFilter(rawInput.y, threshold),
+            0);
+    }
+
+    private float HighPassFilter(float value, float threshold)
+    {
+        return Mathf.Abs(value) > threshold ? value : 0;
     }
     private void OnDrawGizmos()
     {

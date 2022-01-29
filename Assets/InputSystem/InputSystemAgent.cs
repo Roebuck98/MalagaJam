@@ -13,7 +13,7 @@ public class InputSystemAgent : MonoBehaviour
     [Range(0f, 1f)]
     public float InputMovementThreshold = 0.1f;
 
-    private Vector3 _InputMovement;
+    [SerializeField] private Vector3 _InputMovement;
 
     public GameObject bulletPrefab;
     public Transform bulletStart;
