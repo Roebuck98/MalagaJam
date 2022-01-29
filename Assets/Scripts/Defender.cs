@@ -7,8 +7,8 @@ public class Defender : MonoBehaviour
 {
     [SerializeField] private Vector2 input;
     [SerializeField] private Vector2 lastInput;
-    private Vector2 rotation;
-    private Vector2 lastRotation;
+    [SerializeField] private Vector2 rotation;
+    [SerializeField] private Vector2 lastRotation;
     public KeyCode absorbKey;
     public Transform playerGraphics;
     public float absorbRadius;

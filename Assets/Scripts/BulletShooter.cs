@@ -54,7 +54,7 @@ public class BulletShooter : MonoBehaviour
                 currentWaypoint++;
             }
             transform.position += new Vector3(force.x, force.y, 0);
-            if (Vector2.Distance(transform.position, target.position) <= 0.1f)
+            if (Vector2.Distance(transform.position, target.position) <= 0.6f)
             {
                 gameObject.SetActive(false);
             }
