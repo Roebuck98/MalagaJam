@@ -25,7 +25,16 @@ public class BulletShooter : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(direction * bulletSpeed * Time.deltaTime, Space.Self);
-            
+        Debug.Log(direction);
+        if (_isMoving && direction != Vector2.zero)
+        {
+            defaultBulletDirection = new Vector2(direction.x, direction.y);
+            transform.Translate(direction * bulletSpeed * Time.deltaTime, Space.World);
+        }
+        else if (_isMoving && direction == Vector2.zero)
+        {
+            transform.Translate(defaultBulletDirection * bulletSpeed * Time.deltaTime, Space.Self);
+        }
+
     }
 }

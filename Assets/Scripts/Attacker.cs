@@ -66,6 +66,8 @@ public class Attacker : MonoBehaviour
         {
             _lastShotTime = Time.time;
             GameObject bullet = Instantiate(bulletPrefab, bulletStart.position, bulletStart.rotation);
+            bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
+            bullet.transform.right = _lastInputRotation;
         }
     }
 
