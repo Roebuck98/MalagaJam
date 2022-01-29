@@ -77,8 +77,8 @@
                 {
                     "name": "",
                     "id": "5fadb1ea-d5aa-4e25-a82a-3a99620f848b",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Absorb",
