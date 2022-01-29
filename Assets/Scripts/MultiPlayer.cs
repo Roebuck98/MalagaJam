@@ -13,6 +13,8 @@ public class MultiPlayer : MonoBehaviour
     public Transform Player1SpawnPointTuto;
     public Transform Player2SpawnPointTuto;
 
+    public GameObject GameOverCanvas;
+
     private string _gamepadLayout = "XInputControllerWindows";
     private int _maxPlayers = 2;
     private int _currentPlayers = 0;
@@ -49,6 +51,7 @@ public class MultiPlayer : MonoBehaviour
                         {
                             enemy.target = player.transform;
                         }
+                        player.GetComponent<CharacterHealth>().GameOverCanvas = GameOverCanvas;
                         //LevelManager.SetPlayer(player);
                         _player1Spawned = true;
                     }
