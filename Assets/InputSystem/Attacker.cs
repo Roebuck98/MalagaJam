@@ -27,20 +27,26 @@ public class Attacker : MonoBehaviour
     [Range(0f, 1f)]
     public float InputRotationThreshold = 0.6f;
     private Vector3 _InputRotation;
+    private Vector3 _lastInputRotation;
 
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         def = GetComponent<Defender>();
+        _lastInputRotation = Vector3.right;
 
         
     }
     private void Update()
     {
-        Move();
         Rotate();
         Shoot();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
     public void Move()
     {
@@ -50,7 +56,7 @@ public class Attacker : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             else if(_InputRotation.x <= - 0.01f)
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
-            CharacterController.Move(_InputMovement.normalized * MovementSped * Time.deltaTime);
+            transform.Translate(_InputMovement.normalized * MovementSped * Time.fixedDeltaTime);
         }
     }
 
@@ -60,7 +66,8 @@ public class Attacker : MonoBehaviour
         {
             _lastShotTime = Time.time;
             GameObject bullet = Instantiate(bulletPrefab, bulletStart.position,Quaternion.identity);
-            bullet.GetComponent<BulletShooter>().direction = _InputRotation;
+            bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
+            bullet.transform.right = _lastInputRotation;
         }
     }
 
@@ -92,6 +99,9 @@ public class Attacker : MonoBehaviour
         var inputRotation = value.ReadValue<Vector2>();
         var rawInputRotation = new Vector2(inputRotation.x, inputRotation.y);
         _InputRotation = FilterInput(rawInputRotation, InputRotationThreshold);
+        _lastInputRotation = _InputRotation;
+        if (rawInputRotation == Vector2.zero)
+            _lastInputRotation = transform.right;
     }
 
     public void OnShoot(InputAction.CallbackContext value)
