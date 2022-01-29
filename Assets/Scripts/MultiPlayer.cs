@@ -14,6 +14,7 @@ public class MultiPlayer : MonoBehaviour
     private int _maxPlayers = 2;
     private int _currentPlayers = 0;
     private bool _player1Spawned = false;
+    GameObject _player;
 
     void Update()
     {
@@ -30,12 +31,15 @@ public class MultiPlayer : MonoBehaviour
                 if (!_player1Spawned)
                 {
                     var player = InstantiatePlayer(0, Player1Prefab, Player1SpawnPoint, allGamepads[0]);
+                    _player = player;
                     //LevelManager.SetPlayer(player);
                     _player1Spawned = true;
                 }
                 else
                 {
-                    InstantiatePlayer(1, Player2Prefab, Player2SpawnPoint, allGamepads[1]);
+                    var player = InstantiatePlayer(1, Player2Prefab, Player2SpawnPoint, allGamepads[1]);
+                    _player.GetComponent<Defender>().otherPlayer = player;
+                    player.GetComponent<Defender>().otherPlayer = _player;
                 }
                 _currentPlayers++;
             }

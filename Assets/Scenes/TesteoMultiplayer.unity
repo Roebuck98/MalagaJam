@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
   lastInput: {x: 0, y: 0}
+  rotation: {x: 0, y: 0}
+  lastRotation: {x: 0, y: 0}
   absorbKey: 0
   playerGraphics: {fileID: 629088515}
   absorbRadius: 0
@@ -173,6 +175,8 @@ MonoBehaviour:
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
   energyBar: 1
+  absorbCooldown: 0
+  absorbMovementSpeed: 0
 --- !u!143 &93554588
 CharacterController:
   m_ObjectHideFlags: 0
@@ -345,6 +349,92 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &134809161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134809163}
+  - component: {fileID: 134809162}
+  m_Layer: 0
+  m_Name: AStar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &134809162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134809161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAIIezjlAq2XAIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty2jAU/RVG69IBJoamu9YhpAsCE5rJxhtZvsYaZMmjB68M/94r2caOu0Kcc+7VuQ/5k3BpKmBW6ZXm2VplQH6OiD+Tb6OOfIEz3Su541doNR88s4UX0aB5o5YrxKc+zKgSrObsl9wLL54g6CTPlS6X2R5iZaxBOKfCAFJaWR8tEfockTP+jB99yAVPs4U/XfH0OBnd8MhAWtA9adQoW904CjonmaBlBZk33cln0T1zVCeUWFCj8eaZEoKbxg2xlypUG9PKOKwFBRmnWF2w4PUF8H1hfb5+8CbPDdjGlaaXJ66xSXVW8lvVnSupOdTOjlS40KjgqE65/o8dTwOda1W+tLdOJ/4GW3B2eKMXRo3tNbYPP3217eSJigNNBXwUIF/VSisnMyStdj7UGZg9dX/vhcUFsEOH11YHoKu6fk+G08EabqH2cyx4mXrq+0MN7IQK3Q7DB41z+YOGw2qYJgWi3sW7gb9039+hhnjm2likmiqlt5cqp72ULEPPfDXOxkpLCHBjugJJhb1sMY0dDnDA9a4dMM/Uv5bm8oZrH8EgJMCdfjIZUFt1ug/LFOq0BlNsnBVcQmfaE6/Yp1hJWe9Xvydt2M7pnLJe2N7x7OtqkSh6SNP5Yj5L6Tx6YPPxD0anszSdzhezfLrI5yTsHpdYJxXb2mjTHpya7JJL3LP2IzJaaVqFXc80Pa34tVS9lnOZqx3TAHJTZ7gbB42X4JvMlhnHBu3AWi7DvMlnQoRiB8iSe6IkVLo8W02TLktCKn5U1iMJicNXIyEevu/yVsORw8lf3ia7kds/UEsDBBQAAAgIAAAIIewI2uh6bQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrSSqalJUpKZuZlRUqKZqUmyma5FcqKhUVKSoZm5UZqheZqZUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezjlAq2XAIAABQFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIewI2uh6bQAAAHgAAAAJACQAAAAAAAAAAAAAAKkCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAYQMAAAAA
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames: []
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!4 &134809163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134809161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &201851030
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &201851031
 Animator:
   serializedVersion: 3
@@ -892,6 +982,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandlePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4704627710453412741, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
 --- !u!1 &1411846857
@@ -1139,7 +1233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1785898954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,8 +1246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a41f7edafef2a754c9f43d04622177c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player1Prefab: {fileID: 8753470801349499826, guid: d7de932ca7fb6ff43aa56562bd204a62, type: 3}
-  Player2Prefab: {fileID: 6351521305270882748, guid: 47cdef80cf79172429630602b8a7f123, type: 3}
+  Player1Prefab: {fileID: 4704627710453412741, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
+  Player2Prefab: {fileID: 3805460249140405858, guid: 58c2b0642cc5896409b09447d7fe8eb8, type: 3}
   Player1SpawnPoint: {fileID: 106058781}
   Player2SpawnPoint: {fileID: 1549937790}
 --- !u!4 &1785898955
@@ -1252,6 +1346,10 @@ PrefabInstance:
     - target: {fileID: 3805460249140405858, guid: 58c2b0642cc5896409b09447d7fe8eb8, type: 3}
       propertyPath: m_Name
       value: DragonPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3805460249140405858, guid: 58c2b0642cc5896409b09447d7fe8eb8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3805460249140405881, guid: 58c2b0642cc5896409b09447d7fe8eb8, type: 3}
       propertyPath: otherPlayer

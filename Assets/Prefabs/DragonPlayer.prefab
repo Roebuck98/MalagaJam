@@ -1,5 +1,87 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &456935004262591762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 325278508889322510}
+  - component: {fileID: 3125161652560387699}
+  m_Layer: 0
+  m_Name: Square
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &325278508889322510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456935004262591762}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6811543404434544000}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!212 &3125161652560387699
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456935004262591762}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4fe8fc312321a6140b0d850657b23916, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 49
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &3805460248486656154
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,15 +224,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3805460249140405858}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.35, y: 0.775, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3805460248626464609}
   - {fileID: 3805460248486656149}
+  - {fileID: 6811543404434544000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3805460249140405883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +304,19 @@ MonoBehaviour:
     m_ActionId: fc01270e-43f5-4cb7-a04b-f947c09a7f5f
     m_ActionName: Player/Shoot[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3805460249140405881}
+        m_TargetAssemblyTypeName: Defender, Assembly-CSharp
+        m_MethodName: OnAbsorb
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 53e1a561-738b-4e22-83d7-c1bf088aa008
     m_ActionName: Player/Absorb[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -244,6 +339,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3805460249140405880}
         m_TargetAssemblyTypeName: Attacker, Assembly-CSharp
+        m_MethodName: OnRotation
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3805460249140405881}
+        m_TargetAssemblyTypeName: Defender, Assembly-CSharp
         m_MethodName: OnRotation
         m_Mode: 0
         m_Arguments:
@@ -298,24 +405,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {x: 0, y: 0}
   lastInput: {x: 0, y: 0}
-  absorbKey: 0
+  rotation: {x: 0, y: 0}
+  lastRotation: {x: 0, y: 0}
   playerGraphics: {fileID: 3805460248626464609}
-  absorbRadius: 0
-  absorbAngle: 0
+  absorbRadius: 3
+  absorbAngle: 30
   absorbLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   movementSpeed: 6
-  absorbIndicator: {fileID: 0}
-  attrackKey: 0
+  absorbIndicator: {fileID: 4528181063804866973}
   ableToMove: 1
   absorbing: 0
-  timeAbsorbing: 0
+  timeAbsorbing: 0.75
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
-  energyBar: 0
-  absorbCooldown: 0
-  absorbMovementSpeed: 0
+  energyBar: 1
+  absorbCooldown: 0.5
+  absorbMovementSpeed: 6
 --- !u!212 &3805460249140405886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -433,3 +540,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98125005, y: 1.461854}
   m_EdgeRadius: 0
+--- !u!1 &4528181063804866973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6811543404434544000}
+  m_Layer: 0
+  m_Name: Absorber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6811543404434544000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4528181063804866973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 325278508889322510}
+  m_Father: {fileID: 3805460249140405882}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,14 +9,12 @@ public class Defender : MonoBehaviour
     [SerializeField] private Vector2 lastInput;
     [SerializeField] private Vector2 rotation;
     [SerializeField] private Vector2 lastRotation;
-    public KeyCode absorbKey;
     public Transform playerGraphics;
     public float absorbRadius;
     public float absorbAngle;
     public LayerMask absorbLayer;
     public float movementSpeed;
     public GameObject absorbIndicator;
-    public KeyCode attrackKey;
     public bool ableToMove;
     public bool absorbing;
     public float timeAbsorbing;
@@ -39,15 +37,9 @@ public class Defender : MonoBehaviour
     }
     private void Update()
     {
-        //GetMovementInput();
-        GetAbsorbInput();
         if (absorbing)
         {
             Absorb();
-        }
-        if (GetAttrackInput())
-        {
-            Attrack();
         }
     }
 
@@ -74,7 +66,7 @@ public class Defender : MonoBehaviour
             Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
     }
-    void OnRotation(InputAction.CallbackContext value)
+    public void OnRotation(InputAction.CallbackContext value)
     {
         var inputMovement = value.ReadValue<Vector2>();
         var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
@@ -92,10 +84,9 @@ public class Defender : MonoBehaviour
         {
             energyBar = 0;
             attacker.enabled = true;
-            Debug.Log("Cambiando rol");
             otherPlayer.GetComponent<Attacker>().ChangeRole();
             //attacker.ChangeRole();
-            this.enabled = false;
+            enabled = false;
         }
             
     }
@@ -103,20 +94,6 @@ public class Defender : MonoBehaviour
     public void onSwap(InputAction.CallbackContext value)
     {
         ChangeRole();
-    }
-    void GetAbsorbInput()
-    {
-        //Test
-        if (Input.GetKeyDown(absorbKey) && !absorbing)
-        {
-            absorbing = true;
-            Invoke(nameof(RestartAbsorb), timeAbsorbing);
-        }
-        //New Input
-    }
-    bool GetAttrackInput()
-    {
-        return Input.GetKeyDown(attrackKey);
     }
     void Absorb()
     {

@@ -9,6 +9,7 @@ public class SpawnPlayerManager : MonoBehaviour
 
     public Transform spawnPointTuto;
     public Transform spawnPointNoTuto;
+    public MultiPlayer multiplayer;
     void Awake()
     {
         IsTuto temp = null;
@@ -19,11 +20,13 @@ public class SpawnPlayerManager : MonoBehaviour
             {
                 //Debug.Log("Entra aqui");
                 character.transform.position = spawnPointTuto.position;
+                multiplayer.Player1SpawnPoint.position = spawnPointTuto.position;
             }
             else
             {
                 //Debug.Log("Entra aqui");
                 character.transform.position = spawnPointNoTuto.position;
+                multiplayer.Player1SpawnPoint.position = spawnPointNoTuto.position;
             }
 
         }
