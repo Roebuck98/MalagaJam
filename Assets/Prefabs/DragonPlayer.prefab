@@ -447,7 +447,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e99ccababc8e7645aaa123d8efcd673, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -559,6 +559,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   IsPlayer: 1
+  BurnTime: 1
+  BurnRate: 0.01
+  GameOverTime: 4
+  GameOverCanvas: {fileID: 0}
 --- !u!1 &4528181063804866973
 GameObject:
   m_ObjectHideFlags: 0

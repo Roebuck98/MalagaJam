@@ -74427,6 +74427,7 @@ MonoBehaviour:
   Player2SpawnPointNormal: {fileID: 2006141670}
   Player1SpawnPointTuto: {fileID: 1783989127}
   Player2SpawnPointTuto: {fileID: 1783989127}
+  GameOverCanvas: {fileID: 1716733514}
 --- !u!4 &413603583
 Transform:
   m_ObjectHideFlags: 0
@@ -82712,7 +82713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1783989126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.32, y: 0, z: 0}
+  m_LocalPosition: {x: -0.3, y: 1.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1803775497}
@@ -83774,7 +83775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006141669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.04, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 11.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1803775497}

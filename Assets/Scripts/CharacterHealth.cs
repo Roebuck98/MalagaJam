@@ -29,32 +29,6 @@ public class CharacterHealth : MonoBehaviour
     }
 
 
-    IEnumerator BurnCharacter()
-    {
-        float burnValue = 0.7f;
-
-        while(burnValue >= 0)
-        {
-            var material = GetComponentInChildren<Renderer>().material;
-            material.SetFloat("_BurnValue", burnValue);
-            burnValue -= BurnRate;
-            yield return new WaitForSeconds(BurnRate * BurnTime);
-        }
-        Destroy(gameObject);
-    }
-
-    IEnumerator ShowGameOver()
-    {
-        float currentTime = Time.time;
-        GameOverCanvas.SetActive(true);
-        while (currentTime < Time.time + GameOverTime)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     IEnumerator DieCharacter()
     {
         float burnValue = 0.7f;
@@ -62,7 +36,7 @@ public class CharacterHealth : MonoBehaviour
         while (burnValue >= 0)
         {
             var material = GetComponentInChildren<Renderer>().material;
-            material.SetFloat("_BurnValue", burnValue);
+            material?.SetFloat("_BurnValue", burnValue);
             burnValue -= BurnRate;
             yield return new WaitForSeconds(BurnRate * BurnTime);
         }
@@ -84,7 +58,7 @@ public class CharacterHealth : MonoBehaviour
         while (burnValue >= 0)
         {
             var material = GetComponentInChildren<Renderer>().material;
-            material.SetFloat("_BurnValue", burnValue);
+            material?.SetFloat("_BurnValue", burnValue);
             burnValue -= BurnRate;
             yield return new WaitForSeconds(BurnRate * BurnTime);
         }

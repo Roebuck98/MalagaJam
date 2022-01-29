@@ -47,7 +47,9 @@ public class BulletShooter : MonoBehaviour
             {
                 reachedEndOfPath = false;
             }
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint + 1] - (Vector2)transform.position).normalized;
+            Vector2 direction = Vector2.zero;
+            if (currentWaypoint + 1 <= path.vectorPath.Count)
+                direction = ((Vector2)path.vectorPath[currentWaypoint + 1] - (Vector2)transform.position).normalized;
             Vector2 force = direction * bulletSpeed * Time.deltaTime;
             float distance = Vector2.Distance(transform.position, path.vectorPath[currentWaypoint]);
             if (distance < nextWaypointDistance)

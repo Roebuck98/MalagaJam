@@ -616,7 +616,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1e99ccababc8e7645aaa123d8efcd673, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -636,7 +636,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 51
   m_Sprite: {fileID: 21300000, guid: 48c5cd3ece6486148b711a19f9774b8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -662,3 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 100
   IsPlayer: 1
+  BurnTime: 1
+  BurnRate: 0.01
+  GameOverTime: 4
+  GameOverCanvas: {fileID: 0}
