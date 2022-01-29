@@ -60,6 +60,15 @@ public class Defender : MonoBehaviour
         input = input.normalized;
         lastInput = lastInput.normalized;
     }
+    public void OnAbsorb(InputAction.CallbackContext value)
+    {
+        if(!absorbing)
+        {
+            absorbing = true;
+            ableToMove = false;
+            Invoke(nameof(IT), timeAbsorbing);
+        }
+    }
     void GetAbsorbInput()
     {
         //Test
