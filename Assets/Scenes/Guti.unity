@@ -1200,6 +1200,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1965269990}
     - target: {fileID: 4704627710453412736, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
+      propertyPath: absorbMovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704627710453412736, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
       propertyPath: absorbingMovementSpeed
       value: 4
       objectReference: {fileID: 0}
