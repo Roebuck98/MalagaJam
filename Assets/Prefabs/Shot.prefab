@@ -5025,7 +5025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f64d382e3db9d409863b594c16a173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
+  direction: {x: 1, y: 0}
   bulletSpeed: 10
 --- !u!1 &7755894798259203279
 GameObject:
