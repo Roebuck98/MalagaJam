@@ -43,8 +43,10 @@ public class CharacterHealth : MonoBehaviour
 
         float currentTime = Time.time;
         GameOverCanvas.SetActive(true);
-        while (currentTime < Time.time + GameOverTime)
+        float deathTime = Time.time;
+        while (currentTime < deathTime+ GameOverTime)
         {
+            currentTime = Time.time;
             yield return new WaitForSeconds(0.1f);
         }
 
