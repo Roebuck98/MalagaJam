@@ -26,6 +26,7 @@ public class RoomManager : MonoBehaviour
         {
             foreach (UnlockDoors door in doors)
                 door.Unlock();
+
         }
 
         enemiesCleared = 0;
@@ -33,7 +34,15 @@ public class RoomManager : MonoBehaviour
 
     public bool AllEnemiesDefeated()
     {
-        if(enemies.Count == 0)
+        bool t = true;
+        foreach (GameObject enemy in enemies)
+            if (enemy != null)
+            {
+                return false;
+            }
+        return t;
+        /*
+        if (enemies.Count == 0)
         {
             return true;
         }
@@ -41,6 +50,7 @@ public class RoomManager : MonoBehaviour
         {
             return false;
         }
+        */
     }
 
     /*void Update2()

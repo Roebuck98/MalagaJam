@@ -56,10 +56,24 @@ public class BasicEnemyAI : MonoBehaviour
 
     public void Follow()
     {
-        if (!Physics2D.Raycast(transform.position, target.position, obstacleLayerMask,3))
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+        if(distanceToTarget <= 10)
         {
-            Debug.Log("Linea de vision");
-            currentState = AIState.Shooting;
+            if (!Physics2D.Raycast(transform.position, target.position, obstacleLayerMask))
+            {
+                Debug.Log("Linea de vision");
+                currentState = AIState.Shooting;
+                return;
+            }
+            if(distanceToTarget <= 4.5f)
+            {
+                Debug.Log("Linea de vision");
+                currentState = AIState.Shooting;
+                return;
+            }
+        }
+        else
+        {
             return;
         }
         if (path == null)

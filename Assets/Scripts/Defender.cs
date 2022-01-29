@@ -86,7 +86,6 @@ public class Defender : MonoBehaviour
             energyBar = 0;
             attacker.enabled = true;
             otherPlayer.GetComponent<Attacker>().ChangeRole();
-            //attacker.ChangeRole();
             enabled = false;
         }
             

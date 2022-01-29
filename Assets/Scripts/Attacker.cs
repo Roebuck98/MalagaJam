@@ -44,6 +44,14 @@ public class Attacker : MonoBehaviour
     {
         Rotate();
         Shoot();
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            BasicEnemyAI[] enemies = GameObject.FindObjectsOfType<BasicEnemyAI>();
+            foreach (var enemy in enemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+        }
     }
 
     private void FixedUpdate()
