@@ -33,7 +33,7 @@ public class BulletShooter : MonoBehaviour
         }
         else if (_isMoving && direction == Vector2.zero)
         {
-            transform.Translate(defaultBulletDirection * bulletSpeed * Time.deltaTime, Space.Self);
+            transform.Translate(defaultBulletDirection * bulletSpeed * Time.deltaTime, Space.World);
         }
 
     }
