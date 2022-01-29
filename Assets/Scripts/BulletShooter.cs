@@ -6,11 +6,12 @@ public class BulletShooter : MonoBehaviour
     public GameObject SpriteMoving;
     public GameObject SpriteSticked;
     public bool SetChildToCollision = false;
+    public bool IsSticky = true;
     private bool _isMoving;
     public Vector2 direction;
     public float bulletSpeed;
     private Vector2 defaultBulletDirection;
-
+    public int BulletDamage = 50;
     public float nextWaypointDistance;
     public bool pool;
     Path path;
@@ -63,15 +64,25 @@ public class BulletShooter : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isMoving = false;
-        SpriteMoving.SetActive(false);
-        SpriteSticked.SetActive(true);
-        var normal = collision.contacts[0].normal;
-        transform.right = - new Vector3(normal.x, normal.y, 0);
-        if (SetChildToCollision)
+        if (IsSticky)
         {
-            transform.parent = collision.transform;
+            _isMoving = false;
+            SpriteMoving.SetActive(false);
+            SpriteSticked.SetActive(true);
+            var normal = collision.contacts[0].normal;
+            transform.right = -new Vector3(normal.x, normal.y, 0);
+            if (SetChildToCollision)
+            {
+                transform.parent = collision.transform;
+            }
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        var characterHealth = collision.gameObject.GetComponent<CharacterHealth>();
+        characterHealth?.TakeDamage(BulletDamage);
     }
 
     private void Move()
