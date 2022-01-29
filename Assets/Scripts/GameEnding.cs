@@ -8,39 +8,39 @@ public class GameEnding : MonoBehaviour
 {
 	public float fadeDuration = 1f;
 	public float displayImageDuration = 1f;
-	public GameObject player;
-	public CanvasGroup exitBackgroundImageCanvasGroup;
-	public CanvasGroup caughtBackgroundImageCanvasGroup;
-	public AudioSource exitAudio;
-	public AudioSource caughtAudio;
+	//public GameObject player;
+	public CanvasGroup winBackgroundImageCanvasGroup;
+	public CanvasGroup looseBackgroundImageCanvasGroup;
+	public AudioSource winAudio;
+	public AudioSource looseAudio;
 
-	bool m_IsPlayerAtExit;
-	bool m_IsPlayerCaught;
+	bool winCondition;
+	bool looseCondition;
 	float m_Timer;
 	bool m_HasAudioPlayed;
 
-	void OnTriggerEnter (Collider other)
+	/*void OnTriggerEnter (Collider other)
     {
 	if (other.gameObject == player)
         {
-		m_IsPlayerAtExit = true;
+		winCondition = true;
         }
-    }
+    }*/
 
   public void CaughtPlayer ()
     {
-        m_IsPlayerCaught = true;
+        looseCondition = true;
     }
 
 	void Update ()
     {
-	if(m_IsPlayerAtExit)
+	if(winCondition)
         {
-		EndLevel (exitBackgroundImageCanvasGroup, false, exitAudio);
+		EndLevel (winBackgroundImageCanvasGroup, false, winAudio);
         }
-	else if(m_IsPlayerCaught)
+	else if(looseCondition)
     	{
-        	EndLevel (caughtBackgroundImageCanvasGroup, true, caughtAudio);
+        	EndLevel (looseBackgroundImageCanvasGroup, true, looseAudio);
     	}
     }
 
