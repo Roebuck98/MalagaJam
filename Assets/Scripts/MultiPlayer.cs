@@ -60,6 +60,12 @@ public class MultiPlayer : MonoBehaviour
                         var player = InstantiatePlayer(1, Player2Prefab, Player2SpawnPointTuto, allGamepads[1]);
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
+                        if(CameraTarget.instance)
+                        {
+                            CameraTarget.instance.player1Pos = _player.transform;
+                            CameraTarget.instance.player2Pos = player.transform;
+                            GameObject.FindObjectOfType<CameraFollower>().Target = CameraTarget.instance.transform;
+                        }
                     }
                 }
                 else
@@ -82,6 +88,12 @@ public class MultiPlayer : MonoBehaviour
                         var player = InstantiatePlayer(1, Player2Prefab, Player2SpawnPointNormal, allGamepads[1]);
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
+                        if (CameraTarget.instance)
+                        {
+                            CameraTarget.instance.player1Pos = _player.transform;
+                            CameraTarget.instance.player2Pos = player.transform;
+                            GameObject.FindObjectOfType<CameraFollower>().Target = CameraTarget.instance.transform;
+                        }
                     }
                 }
                 _currentPlayers++;
