@@ -36,6 +36,10 @@ public class Defender : MonoBehaviour
         attacker = GetComponent<Attacker>();
         lastTimeAbsorb = -absorbCooldown;
     }
+    private void Start()
+    {
+        MainSceneUiManager.instance.UpdateExplosionBar(energyBar);
+    }
     private void Update()
     {
         if (absorbing)
@@ -84,6 +88,7 @@ public class Defender : MonoBehaviour
         if(energyBar >= 1) 
         {
             energyBar = 0;
+            MainSceneUiManager.instance.UpdateExplosionBar(energyBar);
             attacker.enabled = true;
             otherPlayer.GetComponent<Attacker>().ChangeRole();
             enabled = false;
@@ -113,6 +118,7 @@ public class Defender : MonoBehaviour
                             collider.GetComponent<BulletShooter>().target = transform;
                             collider.GetComponent<BulletShooter>().pool = true;
                             Attacker.bulletsToShoot++;
+                            MainSceneUiManager.instance.UpdateBulletBar();
                         }
                     }
                 }
@@ -131,6 +137,7 @@ public class Defender : MonoBehaviour
                             collider.GetComponent<BulletShooter>().target = transform;
                             collider.GetComponent<BulletShooter>().pool = true;
                             energyBar += 0.1f;
+                            MainSceneUiManager.instance.UpdateExplosionBar(energyBar);
                         }
                     }
                 }

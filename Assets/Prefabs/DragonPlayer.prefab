@@ -425,7 +425,7 @@ MonoBehaviour:
   timeAbsorbing: 0.75
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
-  energyBar: 1
+  energyBar: 0.5
   absorbCooldown: 0.5
   absorbMovementSpeed: 6
 --- !u!212 &3805460249140405886
@@ -563,6 +563,7 @@ MonoBehaviour:
   BurnRate: 0.01
   GameOverTime: 4
   GameOverCanvas: {fileID: 0}
+  player1: 0
 --- !u!1 &4528181063804866973
 GameObject:
   m_ObjectHideFlags: 0

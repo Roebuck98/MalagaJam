@@ -37,8 +37,8 @@ public class Attacker : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         def = GetComponent<Defender>();
         _lastInputRotation = Vector3.right;
-        bulletsToShoot = 5;
-        
+        bulletsToShoot = 10;
+        MainSceneUiManager.instance.UpdateBulletBar();
     }
     private void Update()
     {
@@ -79,6 +79,7 @@ public class Attacker : MonoBehaviour
             bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
             bullet.transform.right = _lastInputRotation;
             bulletsToShoot--;
+            MainSceneUiManager.instance.UpdateBulletBar();
         }
     }
 
