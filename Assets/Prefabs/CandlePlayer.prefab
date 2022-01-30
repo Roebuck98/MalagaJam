@@ -500,6 +500,7 @@ MonoBehaviour:
   InputRotationThreshold: 0.2
   _InputRotation: {x: 0, y: 0, z: 0}
   _lastInputRotation: {x: 0, y: 0, z: 0}
+  anim: {fileID: 6996883467309076067}
 --- !u!114 &4704627710453412736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +537,7 @@ MonoBehaviour:
   absorbCooldown: 0.5
   absorbMovementSpeed: 5
   asource: {fileID: -8249798351044634552}
+  anim: {fileID: 6996883467309076067}
 --- !u!50 &2252412620358533248
 Rigidbody2D:
   serializedVersion: 4

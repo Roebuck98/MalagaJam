@@ -397,6 +397,7 @@ MonoBehaviour:
   InputRotationThreshold: 0.2
   _InputRotation: {x: 0, y: 0, z: 0}
   _lastInputRotation: {x: 0, y: 0, z: 0}
+  anim: {fileID: 3805460249140405887}
 --- !u!114 &3805460249140405881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +434,7 @@ MonoBehaviour:
   absorbCooldown: 0.5
   absorbMovementSpeed: 6
   asource: {fileID: 4838419538402565162}
+  anim: {fileID: 3805460249140405887}
 --- !u!212 &3805460249140405886
 SpriteRenderer:
   m_ObjectHideFlags: 0
