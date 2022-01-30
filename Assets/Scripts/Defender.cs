@@ -36,6 +36,7 @@ public class Defender : MonoBehaviour
     public Animator anim;
 
     public GameObject prefabExplosion;
+    public AudioSource absortionSource;
 
 
     private void Awake()
@@ -82,8 +83,9 @@ public class Defender : MonoBehaviour
     {
         if(!absorbing && lastTimeAbsorb + absorbCooldown <= Time.time)
         {
+            Debug.Log("absorber");
             absorbing = true;
-            asource.Play();
+            absortionSource.PlayOneShot(absortionSource.clip);
             Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
     }
@@ -211,7 +213,7 @@ public class Defender : MonoBehaviour
     {
         absorbIndicator.SetActive(false);
         absorbing = false;
-        asource.Stop();
+        absortionSource.Stop();
         lastTimeAbsorb = Time.time;
     }
     private Vector3 FilterInput(Vector3 rawInput, float threshold)
