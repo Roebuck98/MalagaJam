@@ -13,7 +13,7 @@ public class MultiPlayer : MonoBehaviour
     public Transform Player1SpawnPointTuto;
     public Transform Player2SpawnPointTuto;
 
-    public GameObject GameOverCanvas;
+    public GameEnding Death;
 
     private string _gamepadLayout = "XInputControllerWindows";
     private int _maxPlayers = 2;
@@ -51,21 +51,16 @@ public class MultiPlayer : MonoBehaviour
                         {
                             enemy.target = player.transform;
                         }
-                        player.GetComponent<CharacterHealth>().GameOverCanvas = GameOverCanvas;
+                        player.GetComponent<CharacterHealth>().Death = Death;
                         //LevelManager.SetPlayer(player);
                         _player1Spawned = true;
                     }
                     else
                     {
                         var player = InstantiatePlayer(1, Player2Prefab, Player2SpawnPointTuto, allGamepads[1]);
+                        player.GetComponent<CharacterHealth>().Death = Death;
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
-                        if(CameraTarget.instance)
-                        {
-                            CameraTarget.instance.player1Pos = _player.transform;
-                            CameraTarget.instance.player2Pos = player.transform;
-                            GameObject.FindObjectOfType<CameraFollower>().Target = CameraTarget.instance.transform;
-                        }
                     }
                 }
                 else
@@ -74,6 +69,7 @@ public class MultiPlayer : MonoBehaviour
                     {
                         var player = InstantiatePlayer(0, Player1Prefab, Player1SpawnPointNormal, allGamepads[0]);
                         _player = player;
+                        player.GetComponent<CharacterHealth>().Death = Death;
                         GameObject.FindObjectOfType<CameraFollower>().Target = player.transform;
                         BasicEnemyAI[] enemies = GameObject.FindObjectsOfType<BasicEnemyAI>();
                         foreach (var enemy in enemies)
@@ -88,12 +84,7 @@ public class MultiPlayer : MonoBehaviour
                         var player = InstantiatePlayer(1, Player2Prefab, Player2SpawnPointNormal, allGamepads[1]);
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
-                        if (CameraTarget.instance)
-                        {
-                            CameraTarget.instance.player1Pos = _player.transform;
-                            CameraTarget.instance.player2Pos = player.transform;
-                            GameObject.FindObjectOfType<CameraFollower>().Target = CameraTarget.instance.transform;
-                        }
+                        player.GetComponent<CharacterHealth>().Death = Death;
                     }
                 }
                 _currentPlayers++;

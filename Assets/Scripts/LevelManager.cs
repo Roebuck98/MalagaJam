@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public List<RoomManager> rooms;
-    public GameObject winScreen;
+    public GameEnding winScreen;
     void Start()
     {
         
@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     {
         if (CheckAllRooms())
         {
-            winScreen.SetActive(true);
+            winScreen.AllEnemiesClear();
         }
     }
 
