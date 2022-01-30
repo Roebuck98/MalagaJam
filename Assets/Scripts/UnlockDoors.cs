@@ -23,6 +23,7 @@ public class UnlockDoors : MonoBehaviour
     public void Unlock()
     {
         gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
 }
