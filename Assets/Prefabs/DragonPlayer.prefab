@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 49
+  m_SortingOrder: 52
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -430,11 +430,12 @@ MonoBehaviour:
   timeAbsorbing: 0.75
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
-  energyBar: 0.5
+  energyBar: 1
   absorbCooldown: 0.5
   absorbMovementSpeed: 6
   asource: {fileID: 4838419538402565162}
   anim: {fileID: 3805460249140405887}
+  prefabExplosion: {fileID: 3869689237896307876, guid: eccd151dd5bcf89449fd1afa09e0953c, type: 3}
 --- !u!212 &3805460249140405886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -557,7 +558,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.06, y: 3.404}
+    oldSize: {x: 2.7818182, y: 3.0945454}
     newSize: {x: 2.0371428, y: 1.9742857}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -583,7 +584,7 @@ MonoBehaviour:
   BurnTime: 1
   BurnRate: 0.01
   GameOverTime: 4
-  GameOverCanvas: {fileID: 0}
+  Death: {fileID: 0}
   player1: 0
 --- !u!82 &-2070582034959977734
 AudioSource:

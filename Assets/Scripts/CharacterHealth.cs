@@ -10,7 +10,7 @@ public class CharacterHealth : MonoBehaviour
     public float BurnTime = 1f;
     public float BurnRate = 0.01f;
     public float GameOverTime = 4f;
-    public GameObject GameOverCanvas;
+    public GameEnding Death;
     public bool player1;
     
     public void TakeDamage(int damage)
@@ -51,16 +51,9 @@ public class CharacterHealth : MonoBehaviour
             yield return new WaitForSeconds(BurnRate * BurnTime);
         }
 
-        float currentTime = Time.time;
-        GameOverCanvas.SetActive(true);
-        float deathTime = Time.time;
-        while (currentTime < deathTime+ GameOverTime)
-        {
-            currentTime = Time.time;
-            yield return new WaitForSeconds(0.1f);
-        }
+        Death.CaughtPlayer();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 
     IEnumerator DieEnemy()

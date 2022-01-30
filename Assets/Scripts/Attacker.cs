@@ -42,6 +42,10 @@ public class Attacker : MonoBehaviour
         bulletsToShoot = 10;
         MainSceneUiManager.instance.UpdateBulletBar();
     }
+    private void Start()
+    {
+        anim.SetBool("Attacking", true);
+    }
     private void Update()
     {
         Rotate();

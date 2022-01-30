@@ -35,11 +35,14 @@ public class Defender : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject prefabExplosion;
+
 
     private void Awake()
     {
         attacker = GetComponent<Attacker>();
-        lastTimeAbsorb = -absorbCooldown; 
+        lastTimeAbsorb = -absorbCooldown;
+        anim.SetBool("Attacking", false);
     }
     private void Start()
     {
@@ -112,6 +115,7 @@ public class Defender : MonoBehaviour
 
     public void onSwap(InputAction.CallbackContext value)
     {
+        Instantiate(prefabExplosion, (Vector2)transform.position - (Vector2.up * 0.5f),Quaternion.identity);
         ChangeRole();
     }
     void Absorb()

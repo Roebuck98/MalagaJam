@@ -31,6 +31,10 @@ public class GameEnding : MonoBehaviour
     {
         looseCondition = true;
     }
+    public void AllEnemiesClear ()
+    {
+        winCondition = true;
+    }
 
 	void Update ()
     {
@@ -46,6 +50,8 @@ public class GameEnding : MonoBehaviour
 
 	void EndLevel (CanvasGroup imageCanvasGroup, bool doRestart, AudioSource audioSource)
     {
+        imageCanvasGroup.enabled = true;
+        audioSource.enabled = true;
 	if (!m_HasAudioPlayed)
         {
             audioSource.Play();
