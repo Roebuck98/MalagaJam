@@ -3462,7 +3462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fight for your light
+  m_text: Fight for your Light
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 75ad04e8fc5fe884aa36d7ded03b555e, type: 2}
   m_sharedMaterial: {fileID: -1190200324813735660, guid: 75ad04e8fc5fe884aa36d7ded03b555e, type: 2}
@@ -3489,8 +3489,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 140.94
-  m_fontSizeBase: 140.94
+  m_fontSize: 140
+  m_fontSizeBase: 140
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

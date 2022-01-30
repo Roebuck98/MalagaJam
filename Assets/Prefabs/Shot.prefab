@@ -5033,7 +5033,7 @@ MonoBehaviour:
   IsSticky: 1
   direction: {x: 1, y: 0}
   bulletSpeed: 10
-  BulletDamage: 50
+  BulletDamage: 100
   nextWaypointDistance: 0.1
   pool: 0
   target: {fileID: 0}
