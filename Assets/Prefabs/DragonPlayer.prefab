@@ -430,7 +430,7 @@ MonoBehaviour:
   timeAbsorbing: 0.75
   InputMovementThreshold: 0.1
   otherPlayer: {fileID: 0}
-  energyBar: 0.5
+  energyBar: 1
   absorbCooldown: 0.5
   absorbMovementSpeed: 6
   asource: {fileID: 4838419538402565162}
@@ -557,7 +557,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.06, y: 3.404}
+    oldSize: {x: 2.1857142, y: 2.4314287}
     newSize: {x: 2.0371428, y: 1.9742857}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

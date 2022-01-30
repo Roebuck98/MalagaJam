@@ -39,7 +39,8 @@ public class Defender : MonoBehaviour
     private void Awake()
     {
         attacker = GetComponent<Attacker>();
-        lastTimeAbsorb = -absorbCooldown; 
+        lastTimeAbsorb = -absorbCooldown;
+        anim.SetBool("Attacking", false);
     }
     private void Start()
     {
