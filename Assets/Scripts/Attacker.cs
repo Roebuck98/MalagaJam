@@ -31,6 +31,8 @@ public class Attacker : MonoBehaviour
 
     public static float bulletsToShoot;
 
+    public Animator anim;
+
 
     private void Awake()
     {
@@ -62,11 +64,16 @@ public class Attacker : MonoBehaviour
     {
         if (_InputMovement != Vector3.zero)
         {
+            anim.SetBool("Walking", true);
             if(_InputRotation.x >= 0.01f)
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             else if(_InputRotation.x <= - 0.01f)
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
             transform.Translate(_InputMovement.normalized * MovementSped * Time.fixedDeltaTime, Space.World);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
         }
     }
 
@@ -74,6 +81,7 @@ public class Attacker : MonoBehaviour
     {
         if (_shooting && _lastShotTime + 1 / FireRate < Time.time && bulletsToShoot > 0)
         {
+            anim.SetTrigger("Attacked");
             _lastShotTime = Time.time;
             GameObject bullet = Instantiate(bulletPrefab, bulletStart.position, bulletStart.rotation);
             bullet.GetComponent<BulletShooter>().direction = _lastInputRotation.normalized;
@@ -93,6 +101,7 @@ public class Attacker : MonoBehaviour
 
     public void ChangeRole()
     {
+        anim.SetBool("Attacking", false);
         def.enabled = true;
         this.enabled = false;
     }

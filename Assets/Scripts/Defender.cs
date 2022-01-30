@@ -33,6 +33,9 @@ public class Defender : MonoBehaviour
 
     public AudioSource asource;
 
+    public Animator anim;
+
+
     private void Awake()
     {
         attacker = GetComponent<Attacker>();
@@ -60,8 +63,15 @@ public class Defender : MonoBehaviour
         var rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
         rawInputMovement = FilterInput(rawInputMovement, InputMovementThreshold);
         input = rawInputMovement;
-        if (rawInputMovement != Vector2.zero)
+        if (rawInputMovement != Vector2.zero) {
+            anim.SetBool("Walking", true);
+
             lastInput = rawInputMovement;
+    }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
         input = input.normalized;
         lastInput = lastInput.normalized;
     }
@@ -95,6 +105,7 @@ public class Defender : MonoBehaviour
             attacker.enabled = true;
             otherPlayer.GetComponent<Attacker>().ChangeRole();
             enabled = false;
+            anim.SetBool("Attacking", true);
         }
             
     }
