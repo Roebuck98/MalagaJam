@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 49
+  m_SortingOrder: 52
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -538,6 +538,7 @@ MonoBehaviour:
   absorbMovementSpeed: 5
   asource: {fileID: -8249798351044634552}
   anim: {fileID: 6996883467309076067}
+  prefabExplosion: {fileID: 3869689237896307876, guid: eccd151dd5bcf89449fd1afa09e0953c, type: 3}
 --- !u!50 &2252412620358533248
 Rigidbody2D:
   serializedVersion: 4
@@ -672,7 +673,7 @@ MonoBehaviour:
   BurnTime: 1
   BurnRate: 0.01
   GameOverTime: 4
-  GameOverCanvas: {fileID: 0}
+  Death: {fileID: 0}
   player1: 1
 --- !u!114 &5040583069090050901
 MonoBehaviour:
