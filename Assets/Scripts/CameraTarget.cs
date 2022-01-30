@@ -14,7 +14,10 @@ public class CameraTarget : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 newPos = (player1Pos.position - player2Pos.position) * 0.5f;
-        transform.position = newPos;
+        if(player1Pos && player2Pos)
+        {
+            Vector2 newPos = (player1Pos.position - player2Pos.position) * 0.5f;
+            transform.position = newPos;
+        }
     }
 }

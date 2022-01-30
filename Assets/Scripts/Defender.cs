@@ -109,13 +109,13 @@ public class Defender : MonoBehaviour
             otherPlayer.GetComponent<Attacker>().ChangeRole();
             enabled = false;
             anim.SetBool("Attacking", true);
+            Instantiate(prefabExplosion, (Vector2)transform.position - (Vector2.up * 0.5f), Quaternion.identity);
         }
             
     }
 
     public void onSwap(InputAction.CallbackContext value)
     {
-        Instantiate(prefabExplosion, (Vector2)transform.position - (Vector2.up * 0.5f),Quaternion.identity);
         ChangeRole();
     }
     void Absorb()
@@ -182,11 +182,11 @@ public class Defender : MonoBehaviour
     }
     void Flip()
     {
-        if (input.x >= 0.01f)
+        if (rotation.x >= 0.01f)
         {
             transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (input.x <= -0.01f)
+        else if (rotation.x <= -0.01f)
         {
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         }

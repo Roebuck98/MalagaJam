@@ -61,6 +61,11 @@ public class MultiPlayer : MonoBehaviour
                         player.GetComponent<CharacterHealth>().Death = Death;
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
+                        if(CameraTarget.instance)
+                        {
+                            CameraTarget.instance.player1Pos = _player.transform;
+                            CameraTarget.instance.player2Pos = player.transform;
+                        }
                     }
                 }
                 else
@@ -85,6 +90,8 @@ public class MultiPlayer : MonoBehaviour
                         _player.GetComponent<Defender>().otherPlayer = player;
                         player.GetComponent<Defender>().otherPlayer = _player;
                         player.GetComponent<CharacterHealth>().Death = Death;
+                        CameraTarget.instance.player1Pos = _player.transform;
+                        CameraTarget.instance.player2Pos = player.transform;
                     }
                 }
                 _currentPlayers++;
