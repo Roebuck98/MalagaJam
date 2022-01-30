@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame(int n)
+    public void PlayGame()
     {
-        SceneManager.LoadScene(n /*Cambiar escena para el juego nuevo*/);
+        SceneManager.LoadScene("Main Scene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void PlayCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
