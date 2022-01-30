@@ -1689,6 +1689,7 @@ MonoBehaviour:
   player2HpBar: {fileID: 1296950790}
   explosionBar: {fileID: 1516284672}
   bulletsBar: {fileID: 1854755868}
+  swapButtonImage: {fileID: 2125449907}
 --- !u!1 &222017033
 GameObject:
   m_ObjectHideFlags: 0
@@ -84515,7 +84516,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125449905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -84528,7 +84529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7ecece0c3e5d09647912896e1cba4bc7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

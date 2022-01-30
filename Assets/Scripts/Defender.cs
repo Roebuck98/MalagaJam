@@ -198,9 +198,4 @@ public class Defender : MonoBehaviour
     {
         return Mathf.Abs(value) > threshold ? value : 0;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.white;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(lastInput.x, lastInput.y, 0) * absorbRadius);
-    }
 }

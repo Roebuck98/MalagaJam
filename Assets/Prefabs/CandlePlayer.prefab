@@ -669,6 +669,7 @@ MonoBehaviour:
   BurnRate: 0.01
   GameOverTime: 4
   GameOverCanvas: {fileID: 0}
+  player1: 1
 --- !u!114 &5040583069090050901
 MonoBehaviour:
   m_ObjectHideFlags: 0
