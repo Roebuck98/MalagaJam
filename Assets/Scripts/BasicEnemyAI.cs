@@ -107,7 +107,6 @@ public class BasicEnemyAI : MonoBehaviour
     }
     void ResetShot()
     {
-        Debug.Log("Reset");
         timer = 0;
         currentState = AIState.Following;
     }
