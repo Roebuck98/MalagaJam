@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class MainSceneUiManager : MonoBehaviour
 {
     public static MainSceneUiManager instance;
-    public Slider player1HpBar;
-    public Slider player2HpBar;
+    public Image player1HpBar;
+    public Image player2HpBar;
     public Slider explosionBar;
     public Slider bulletsBar;
     public Image swapButtonImage;

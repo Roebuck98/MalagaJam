@@ -19,17 +19,18 @@ public class CharacterHealth : MonoBehaviour
         if(IsPlayer)
         {
             if (player1)
-                MainSceneUiManager.instance.player1HpBar.value = Health / 100f;
+                MainSceneUiManager.instance.player1HpBar.fillAmount = Health / 100f;
             else
             {
-                MainSceneUiManager.instance.player2HpBar.value = Health / 100f;
+                MainSceneUiManager.instance.player2HpBar.fillAmount = Health / 100f;
             }
         }
         if(Health <= 0)
         {
             if (IsPlayer)
             {
-               StartCoroutine(DieCharacter());
+                //StartCoroutine(DieCharacter());
+                Death.CaughtPlayer();
             }
             else
             {
@@ -51,7 +52,7 @@ public class CharacterHealth : MonoBehaviour
             yield return new WaitForSeconds(BurnRate * BurnTime);
         }
 
-        Death.CaughtPlayer();
+        
 
         
     }
