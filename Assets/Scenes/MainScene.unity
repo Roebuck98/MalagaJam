@@ -1687,8 +1687,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1HpBar: {fileID: 1103589710}
   player2HpBar: {fileID: 1217328108}
-  explosionBar: {fileID: 1516284672}
-  bulletsBar: {fileID: 1854755868}
+  explosionBar: {fileID: 269671687}
+  bulletsBar: {fileID: 424722172}
   swapButtonImage: {fileID: 2125449907}
 --- !u!1 &222017033
 GameObject:
@@ -2226,10 +2226,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 3536651724944409135, guid: 7358c2c30bdca784482f920576f1a869, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -74837,10 +74837,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -1884963932241217465, guid: 49e42c4ca3eef57468b263d913691b7f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

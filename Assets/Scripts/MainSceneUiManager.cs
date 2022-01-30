@@ -8,8 +8,8 @@ public class MainSceneUiManager : MonoBehaviour
     public static MainSceneUiManager instance;
     public Image player1HpBar;
     public Image player2HpBar;
-    public Slider explosionBar;
-    public Slider bulletsBar;
+    public Image explosionBar;
+    public Image bulletsBar;
     public Image swapButtonImage;
     private void Awake()
     {
@@ -17,8 +17,8 @@ public class MainSceneUiManager : MonoBehaviour
     }
     public void UpdateExplosionBar(float t)
     {
-        explosionBar.value = t / 1;
-        if(explosionBar.value >= 1)
+        explosionBar.fillAmount = t / 1;
+        if(explosionBar.fillAmount >= 1)
         {
             swapButtonImage.enabled = true;
         }
@@ -29,6 +29,6 @@ public class MainSceneUiManager : MonoBehaviour
     }
     public void UpdateBulletBar()
     {
-        bulletsBar.value = Attacker.bulletsToShoot / 10;
+        bulletsBar.fillAmount = Attacker.bulletsToShoot / 10;
     }
 }

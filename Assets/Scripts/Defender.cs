@@ -84,8 +84,12 @@ public class Defender : MonoBehaviour
         if(!absorbing && lastTimeAbsorb + absorbCooldown <= Time.time)
         {
             Debug.Log("absorber");
+            if(enabled)
+            {
+                absortionSource.PlayOneShot(absortionSource.clip);
+
+            }
             absorbing = true;
-            absortionSource.PlayOneShot(absortionSource.clip);
             Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
     }
