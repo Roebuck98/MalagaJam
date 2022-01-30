@@ -21,19 +21,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -8124553950081098609, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.11666667
+    - time: 0.05
       value: {fileID: 7386853096233605370, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.21666667
+    - time: 0.1
       value: {fileID: -585375519886140727, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.33333334
+    - time: 0.15
       value: {fileID: -259128281168665078, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.43333334
+    - time: 0.18333334
       value: {fileID: -3557384634925638026, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.55
+    - time: 0.23333333
       value: {fileID: -3273175790824157622, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.65
+    - time: 0.28333333
       value: {fileID: -5016552499287805238, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
-    - time: 0.76666665
+    - time: 0.33333334
       value: {fileID: -2928224492328664770, guid: 5a52745f0050a084fbc744e0c35f8bbd, type: 3}
     attribute: m_Sprite
     path: 
@@ -67,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.7833333
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -87,7 +87,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.55
+  - time: 0
     functionName: PlayShot
     data: 
     objectReferenceParameter: {fileID: 0}
