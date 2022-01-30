@@ -31,10 +31,12 @@ public class Defender : MonoBehaviour
 
     public float absorbMovementSpeed;
 
+    public AudioSource asource;
+
     private void Awake()
     {
         attacker = GetComponent<Attacker>();
-        lastTimeAbsorb = -absorbCooldown;
+        lastTimeAbsorb = -absorbCooldown; 
     }
     private void Update()
     {
@@ -64,6 +66,7 @@ public class Defender : MonoBehaviour
         if(!absorbing && lastTimeAbsorb + absorbCooldown <= Time.time)
         {
             absorbing = true;
+            asource.Play();
             Invoke(nameof(RestartAbsorb), timeAbsorbing);
         }
     }
@@ -99,6 +102,7 @@ public class Defender : MonoBehaviour
     {
         if(absorbing)
         {
+            
             Collider2D[] bullets = Physics2D.OverlapCircleAll(transform.position, absorbRadius, absorbLayer);
             if (bullets.Length > 0)
             {
@@ -177,6 +181,7 @@ public class Defender : MonoBehaviour
     {
         absorbIndicator.SetActive(false);
         absorbing = false;
+        asource.Stop();
         lastTimeAbsorb = Time.time;
     }
     private Vector3 FilterInput(Vector3 rawInput, float threshold)
