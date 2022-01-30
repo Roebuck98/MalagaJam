@@ -105,6 +105,7 @@ public class Attacker : MonoBehaviour
 
     public void ChangeRole()
     {
+        enabled = true;
         anim.SetBool("Attacking", false);
         def.enabled = true;
         this.enabled = false;

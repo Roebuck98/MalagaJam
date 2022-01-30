@@ -103,6 +103,14 @@ public class Defender : MonoBehaviour
     {
         if(energyBar >= 1) 
         {
+            BasicEnemyAI[] enemies = FindObjectsOfType<BasicEnemyAI>();
+            if (enemies.Length > 0)
+            {
+                foreach (var enemy in enemies)
+                {
+                    enemy.target = transform;
+                }
+            }
             energyBar = 0;
             MainSceneUiManager.instance.UpdateExplosionBar(energyBar);
             attacker.enabled = true;
@@ -155,7 +163,7 @@ public class Defender : MonoBehaviour
                         {
                             collider.GetComponent<BulletShooter>().target = transform;
                             collider.GetComponent<BulletShooter>().pool = true;
-                            energyBar += 0.1f;
+                            energyBar += 0.2f;
                             MainSceneUiManager.instance.UpdateExplosionBar(energyBar);
                         }
                     }
