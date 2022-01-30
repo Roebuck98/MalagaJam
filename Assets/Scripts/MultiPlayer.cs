@@ -45,7 +45,7 @@ public class MultiPlayer : MonoBehaviour
                     {
                         var player = InstantiatePlayer(0, Player1Prefab, Player1SpawnPointTuto, allGamepads[0]);
                         _player = player;
-                        GameObject.FindObjectOfType<CameraFollower>().Target = player.transform;
+                        //GameObject.FindObjectOfType<CameraFollower>().Target = player.transform;
                         BasicEnemyAI[] enemies = GameObject.FindObjectsOfType<BasicEnemyAI>();
                         foreach (var enemy in enemies)
                         {
@@ -75,7 +75,7 @@ public class MultiPlayer : MonoBehaviour
                         var player = InstantiatePlayer(0, Player1Prefab, Player1SpawnPointNormal, allGamepads[0]);
                         _player = player;
                         player.GetComponent<CharacterHealth>().Death = Death;
-                        GameObject.FindObjectOfType<CameraFollower>().Target = player.transform;
+                        //ameObject.FindObjectOfType<CameraFollower>().Target = player.transform;
                         BasicEnemyAI[] enemies = GameObject.FindObjectsOfType<BasicEnemyAI>();
                         foreach (var enemy in enemies)
                         {

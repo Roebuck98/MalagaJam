@@ -1769,6 +1769,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &222709896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222709897}
+  m_Layer: 0
+  m_Name: Spawnpoint2Normal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &222709897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222709896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.61, y: 11.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1803775497}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &224819654
 GameObject:
   m_ObjectHideFlags: 0
@@ -74678,9 +74708,9 @@ MonoBehaviour:
   Player1Prefab: {fileID: 4704627710453412741, guid: ebffd78fe1cda49468d2786d2a2405c4, type: 3}
   Player2Prefab: {fileID: 3805460249140405858, guid: 58c2b0642cc5896409b09447d7fe8eb8, type: 3}
   Player1SpawnPointNormal: {fileID: 2006141670}
-  Player2SpawnPointNormal: {fileID: 2006141670}
-  Player1SpawnPointTuto: {fileID: 1783989127}
-  Player2SpawnPointTuto: {fileID: 1783989127}
+  Player2SpawnPointNormal: {fileID: 222709897}
+  Player1SpawnPointTuto: {fileID: 2066067218}
+  Player2SpawnPointTuto: {fileID: 751562418}
   Death: {fileID: 1739669918}
 --- !u!4 &413603583
 Transform:
@@ -75179,7 +75209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6e075c8859f9f40a3069032f545950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
+  Target: {fileID: 495393412}
+  DistanceMultiplier: 1
 --- !u!1 &487783870
 GameObject:
   m_ObjectHideFlags: 0
@@ -75392,6 +75423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Pos: {fileID: 0}
   player2Pos: {fileID: 0}
+  Distance: 0
 --- !u!4 &495393413
 Transform:
   m_ObjectHideFlags: 0
@@ -75400,7 +75432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495393411}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9330416, y: 0.8854757, z: -3.9541361}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77004,6 +77036,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa7b941c0135954ba30502be43815ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &751562417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751562418}
+  m_Layer: 0
+  m_Name: TutoSpawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &751562418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751562417}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.79, y: -0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1803775497}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &791573907
 GameObject:
   m_ObjectHideFlags: 0
@@ -83646,6 +83708,8 @@ Transform:
   - {fileID: 2006141670}
   - {fileID: 1783989127}
   - {fileID: 1910392796}
+  - {fileID: 222709897}
+  - {fileID: 751562418}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84420,7 +84484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006141670}
   m_Layer: 0
-  m_Name: Spawnpoint1
+  m_Name: Spawnpoint1Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84802,7 +84866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2066067218}
   m_Layer: 0
-  m_Name: TutoSpawn
+  m_Name: TutoSpawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84816,7 +84880,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066067217}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -0.35, z: 0}
+  m_LocalPosition: {x: -1.17, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1803775497}
