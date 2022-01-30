@@ -65,7 +65,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -231,7 +231,7 @@ TextureImporter:
         serializedVersion: 2
         x: 4055
         y: 2037
-        width: 879
+        width: 866
         height: 1296
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -315,7 +315,7 @@ TextureImporter:
         serializedVersion: 2
         x: 4268
         y: 442
-        width: 906
+        width: 871
         height: 1288
       alignment: 0
       pivot: {x: 0, y: 0}
