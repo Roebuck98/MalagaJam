@@ -12,11 +12,12 @@ public class SoundManager : MonoBehaviour
     public void PlayStep()
     {
         step.pitch = 0.9f + 0.2f * Random.value; 
-        step.Play();
+        step.PlayOneShot(step.clip);
     }
 
     public void PlayShot()
     {
+        Debug.Log("t");
         shot.Play();
     }
 

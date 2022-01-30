@@ -32,6 +32,7 @@ public class Attacker : MonoBehaviour
     public static float bulletsToShoot;
 
     public Animator anim;
+    public SoundManager sound;
 
 
     private void Awake()
@@ -41,6 +42,7 @@ public class Attacker : MonoBehaviour
         _lastInputRotation = Vector3.right;
         bulletsToShoot = 10;
         MainSceneUiManager.instance.UpdateBulletBar();
+        sound = GetComponent<SoundManager>();
     }
     private void Start()
     {
@@ -92,6 +94,7 @@ public class Attacker : MonoBehaviour
             bullet.transform.right = _lastInputRotation;
             bulletsToShoot--;
             MainSceneUiManager.instance.UpdateBulletBar();
+            sound.PlayShot();
         }
     }
 
