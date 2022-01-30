@@ -8,11 +8,6 @@ public class SoundManager : MonoBehaviour
     public AudioSource step;
     public AudioSource shot;
     
-    void Start()
-    {
-        step = GetComponent<AudioSource>();
-        shot = GetComponent<AudioSource>();
-    }
 
     public void PlayStep()
     {
